@@ -12,13 +12,14 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     public float speed;
+    public float rotationSpeed;
     public float velocityLimit;
     public float velocity;
 
     [Header("Cannon")]
     public GameObject cannonObject;
     public GameObject bulletPrefab;
-    public float rotationSpeed;
+    public float shootingCooldown = 0.15f;
     public KeyCode shootingKey = KeyCode.Mouse0;
 
     [Header("UI")]
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
 
     [Header("Private Variables")]
     private float vertical, horizontal;
+    private float shootTimer;
     private Rigidbody2D rb;
 
     [HideInInspector]
@@ -39,47 +41,55 @@ public class Player : MonoBehaviour
     void Start()
     {
         currentHealth = startingHealth;
-
+        shootTimer = shootingCooldown;
     }
 
     void Update()
     {
-        Movement();
-        //MoveCannon();
+        //Movement();
+        Rotate();
         Shoot();
         Die();
         UIElements();
+        ShootingTimer();
         VelocityControl();
+    }
+
+    private void FixedUpdate()
+    {
+        Movement();
     }
 
     void Movement()
     {
-        Vector2 movement = new Vector2(horizontal, vertical);
         vertical = Input.GetAxisRaw("Vertical");
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        rb.AddForce(movement * speed);
+        if (vertical == 1)
+        {
+            speed += Time.deltaTime * 2f;
+        }
+
+        else if (vertical == -1)
+        {
+            speed -= Time.deltaTime * 4f;
+        }
+
+        rb.AddForce(transform.up * speed);
+
     }
 
-    void MoveCannon()
+    void Rotate()
     {
-        Vector3 mouseVector = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
-        Vector2 direction = (Camera.main.ScreenToWorldPoint(mouseVector) - cannonObject. transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //transform.localPosition = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        cannonObject.transform.rotation = Quaternion.Slerp(cannonObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        //cannonObject.transform.rotation = Quaternion.Lerp(cannonObject.transform.rotation, rotation, rotationSpeed);
-        //cannonObject.transform.rotation = rotation;
-
-
+        transform.Rotate(0f, 0f, -horizontal * rotationSpeed);
     }
 
     void Shoot()
     {
-        if(Input.GetKeyDown(shootingKey))
+        if(Input.GetKeyDown(shootingKey) && shootTimer <= 0f)
         {
             Instantiate(bulletPrefab, cannonObject.transform.position, cannonObject.transform.rotation);
+            shootTimer = shootingCooldown;
         }
     }
 
@@ -118,13 +128,29 @@ public class Player : MonoBehaviour
         healthText.text = currentHealth.ToString();
     }
 
+    void ShootingTimer()
+    {
+        shootTimer -= Time.deltaTime;
+
+        if(shootTimer <= 0f)
+        {
+            shootTimer = 0f;
+        }
+    }
+
     void VelocityControl()
     {
-        velocity = rb.velocity.magnitude;
+        velocity = rb.velocity.magnitude * speed;
 
-        if (velocity >= velocityLimit)
+        if (velocity >= velocityLimit + 0.1f)
         {
             velocity = velocityLimit;
+            speed = velocityLimit;
+        }
+
+        if(speed <= -0.1f)
+        {
+            speed = 0f;
         }
     }
 }

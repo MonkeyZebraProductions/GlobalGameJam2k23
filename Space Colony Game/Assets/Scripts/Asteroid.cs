@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+    Rigidbody2D rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(transform.up * 5f, ForceMode2D.Impulse);
         Destroy(gameObject, 10f);
     }
 
@@ -23,10 +26,11 @@ public class Asteroid : MonoBehaviour
             Destroy(gameObject);
         }
 
-        else if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(1);
             Destroy(gameObject);
         }
+
     }
 }

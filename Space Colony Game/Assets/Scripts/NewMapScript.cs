@@ -29,7 +29,7 @@ public class NewMapScript : MonoBehaviour
         if (shipRB.velocity.x > 0.1f)
         {
             float xPos = ship.position.x;
-            xPos *= 1;
+            xPos *= -1;
             ship.position = new Vector2(xPos, ship.position.y);
         }
 

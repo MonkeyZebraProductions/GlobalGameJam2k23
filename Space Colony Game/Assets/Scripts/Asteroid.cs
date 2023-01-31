@@ -23,10 +23,11 @@ public class Asteroid : MonoBehaviour
             Destroy(gameObject);
         }
 
-        else if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(1);
             Destroy(gameObject);
         }
+
     }
 }

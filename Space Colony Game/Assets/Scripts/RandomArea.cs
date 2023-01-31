@@ -14,6 +14,7 @@ public class RandomArea : MonoBehaviour
     public float maxYPos;
     public float minYPos;
     private float PlanetAmount;
+    private bool overlap;
     
 
     // Start is called before the first frame update
@@ -57,20 +58,12 @@ public class RandomArea : MonoBehaviour
 
     public void SpawnPlanet()
     {
-        float SunRadius = Sun.GetComponent<Collider2D>().bounds.extents.x;
-        float PlanetRadius = Planet.GetComponent<Collider2D>().bounds.extents.x;
 
-        PlanetAmount = Random.Range(2, 6);
+        PlanetAmount = Random.Range(2,6);
         for (int i = 0; i < PlanetAmount; i++)
         {
-            Vector2 spawnPoint = new Vector2(GetXPos(posX), GetYPos(posY));
-            Collider2D CollisionWIthSun = Physics2D.OverlapCircle(spawnPoint, SunRadius, LayerMask.GetMask("Overlap"));
-            Collider2D CollisionWIthPlanet = Physics2D.OverlapCircle(spawnPoint, PlanetRadius, LayerMask.GetMask("Overlap"));
-
-            if (CollisionWIthPlanet == false && CollisionWIthSun == false)
-            {
-                Instantiate(Planet, new Vector3(GetXPos(posX), GetYPos(posY), 0), Quaternion.identity);
-            }
+            Instantiate(Planet, new Vector3(GetXPos(posX), GetYPos(posY), 0), Quaternion.identity);
+            
         }
     }
 }

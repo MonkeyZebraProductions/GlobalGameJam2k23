@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private float shootTimer;
     private float velocity;
     private Rigidbody2D rb;
+    private CircleCollider2D collider;
 
     [HideInInspector]
     public int currentHealth;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<CircleCollider2D>();
     }
 
     void Start()
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
         UIElements();
         ShootingTimer();
         VelocityControl();
+        InvulnerablePerks();
     }
 
     private void FixedUpdate()
@@ -83,6 +86,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(shootingKey) && shootTimer <= 0f)
         {
+            //play shoot SFX
             Instantiate(bulletPrefab, cannonObject.transform.position, cannonObject.transform.rotation);
             shootTimer = shootingCooldown;
         }
@@ -92,6 +96,7 @@ public class Player : MonoBehaviour
     {
         if(canTakeDamage)
         {
+            //play damage SFX
             currentHealth -= damage;
             StartCoroutine(InvulnerableFrames());
         }
@@ -106,6 +111,7 @@ public class Player : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
+            //play explosion VFX
             //game over
             Destroy(gameObject);
         }
@@ -135,17 +141,22 @@ public class Player : MonoBehaviour
 
     void VelocityControl()
     {
-        //velocity = rb.velocity.magnitude * speed;
-
         if (velocity >= velocityLimit)
         {
             velocity = velocityLimit;
-            //speed = velocityLimit;
         }
 
         if (vertical == -1 && velocity < 0.5f)
         {
             rb.velocity = Vector3.zero;
         }
+    }
+
+    void InvulnerablePerks()
+    {
+        if (!canTakeDamage)
+            collider.enabled = false;
+        else
+            collider.enabled = true;
     }
 }

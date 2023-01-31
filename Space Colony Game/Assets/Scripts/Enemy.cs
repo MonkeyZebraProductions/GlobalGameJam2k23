@@ -53,9 +53,15 @@ public class Enemy : MonoBehaviour
 
         if (attackTimer <= 0f)
         {
-            Instantiate(bullet);
+            Instantiate(bullet, transform.position + (transform.up * 0.75f), transform.rotation);
             attackTimer = attackCooldown;
         }
+    }
+
+    public void Die()
+    {
+        //instantiate explosion particle
+        Destroy(gameObject);
     }
 
     void RotateToPlayer()

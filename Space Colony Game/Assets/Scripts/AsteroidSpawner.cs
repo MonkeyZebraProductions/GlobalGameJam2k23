@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-    public GameObject asteroidPrefab;
+    public GameObject bigAsteroid, mediumAsteroid, smallAsteroid;
     public float cooldown = 5f;
     public Transform[] spawnPoints;
 
@@ -27,7 +27,7 @@ public class AsteroidSpawner : MonoBehaviour
         float rndAngle = Random.Range(angle + 60f, angle + 120f);
         Quaternion rotation = Quaternion.Euler(0f, 0f, rndAngle);
 
-        Instantiate(asteroidPrefab, spawnPoints[rnd].position, rotation);
+        Instantiate(bigAsteroid, spawnPoints[rnd].position, rotation);
         yield return new WaitForSeconds(cooldown);
         StartCoroutine(SpawnAsteroid());
     }

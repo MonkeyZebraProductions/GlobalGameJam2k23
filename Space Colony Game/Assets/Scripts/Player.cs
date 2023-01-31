@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     private bool canTakeDamage = true;
 
     [Header("Movement")]
-    public float speed;
     public float rotationSpeed;
     public float velocityLimit;
-    public float velocity;
+    public float acceleration = 10f;
+    public float decelaration = 10f;
 
     [Header("Cannon")]
     public GameObject cannonObject;
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     [Header("Private Variables")]
     private float vertical, horizontal;
     private float shootTimer;
+    private float velocity;
     private Rigidbody2D rb;
 
     [HideInInspector]
@@ -66,17 +67,11 @@ public class Player : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (vertical == 1)
-        {
-            speed += Time.deltaTime * 2f;
-        }
-
+            rb.AddForce(transform.up * vertical * acceleration);
         else if (vertical == -1)
-        {
-            speed -= Time.deltaTime * 4f;
-        }
+            rb.AddForce(rb.velocity * vertical * decelaration);
 
-        rb.AddForce(transform.up * speed);
-
+        velocity = rb.velocity.magnitude;
     }
 
     void Rotate()
@@ -140,17 +135,17 @@ public class Player : MonoBehaviour
 
     void VelocityControl()
     {
-        velocity = rb.velocity.magnitude * speed;
+        //velocity = rb.velocity.magnitude * speed;
 
-        if (velocity >= velocityLimit + 0.1f)
+        if (velocity >= velocityLimit)
         {
             velocity = velocityLimit;
-            speed = velocityLimit;
+            //speed = velocityLimit;
         }
 
-        if(speed <= -0.1f)
+        if (vertical == -1 && velocity < 0.5f)
         {
-            speed = 0f;
+            rb.velocity = Vector3.zero;
         }
     }
 }

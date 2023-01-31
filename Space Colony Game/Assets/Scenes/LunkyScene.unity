@@ -576,7 +576,7 @@ GameObject:
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &516568718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,10 +1314,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  speed: 0
   rotationSpeed: 2
-  velocityLimit: 2
-  velocity: 0
+  velocityLimit: 2.5
+  acceleration: 3
+  decelaration: 1.5
   cannonObject: {fileID: 454761671}
   bulletPrefab: {fileID: 9189747687211852861, guid: 6394bb306b161cc4e8aed4ca6607336e, type: 3}
   shootingCooldown: 0.15

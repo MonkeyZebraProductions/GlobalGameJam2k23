@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+    Rigidbody2D rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(transform.up * 5f, ForceMode2D.Impulse);
         Destroy(gameObject, 10f);
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+    public float speed = 5f;
+
     public enum Size { big, medium, small}
     public Size size;
 
@@ -15,8 +17,8 @@ public class Asteroid : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         asteroidSpawner = GameObject.FindGameObjectWithTag("AS").GetComponent<AsteroidSpawner>();
 
-        rb.AddForce(transform.up * 5f, ForceMode2D.Impulse);
-        Destroy(gameObject, 10f);
+        rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
+        Destroy(gameObject, 30f);
     }
 
     void Update()

@@ -11,10 +11,12 @@ public class RevivePlanet : MonoBehaviour
     public bool IsColonising;
     public float AliveRate, UnaliveRate,AliveDistance,TooClose;
     private float alivePecentage;
+    private Landing land;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
+        land = FindObjectOfType<Landing>();
     }
 
     // Update is called once per frame
@@ -48,9 +50,9 @@ public class RevivePlanet : MonoBehaviour
 
         if(alivePecentage>=100)
         {
+            land.enabled = true;
             Destroy(this.gameObject);
         }
-        Debug.Log(playerDistance);
     }
 
     private float MapFunction(float x, float from_min, float from_max, float to_min, float to_max)

@@ -176,12 +176,12 @@ public class Player : MonoBehaviour
     {
         if (!canTakeDamage)
         {
-            collider.enabled = false;
+          //  collider.enabled = false;
             FlashingSprite();
         }
         else
         {
-            collider.enabled = true;
+           // collider.enabled = true;
             renderer.enabled = true;
         }
     }

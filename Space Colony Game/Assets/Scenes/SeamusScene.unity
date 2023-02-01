@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 725362845}
   - component: {fileID: 725362844}
   - component: {fileID: 725362847}
+  - component: {fileID: 725362848}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -396,6 +397,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &725362848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725362843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0dfdef0c359b7645b7a89e6b34aa37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1161434188}
+  z: -20
 --- !u!1 &969937198
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +546,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969937198}
   m_CullTransparentMesh: 1
+--- !u!4 &1161434188 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 796957516507154381, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
+  m_PrefabInstance: {fileID: 1213076122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1213076122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -591,6 +611,10 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 969937200}
+    - target: {fileID: 796957516507154383, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
+      propertyPath: rotationSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}

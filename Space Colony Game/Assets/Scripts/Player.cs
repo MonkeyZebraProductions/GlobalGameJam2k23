@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     private float startingCamSize;
     private bool spriteBool = false;
     private Rigidbody2D rb;
-    private CircleCollider2D collider;
+    private CapsuleCollider2D collider;
     private AudioManager audioManager;
     private SpriteRenderer renderer;
 
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<CircleCollider2D>();
+        collider = GetComponent<CapsuleCollider2D>();
         renderer = GetComponent<SpriteRenderer>();
     }
 
@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
+            Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
             //game over
             Destroy(gameObject);
         }
@@ -176,12 +176,12 @@ public class Player : MonoBehaviour
     {
         if (!canTakeDamage)
         {
-            collider.enabled = false;
+          //  collider.enabled = false;
             FlashingSprite();
         }
         else
         {
-            collider.enabled = true;
+           // collider.enabled = true;
             renderer.enabled = true;
         }
     }

@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         audioManager.PlayRandomExlposion();
-        Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
+        Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
         Destroy(gameObject);
     }
 

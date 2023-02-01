@@ -1,6 +1,6 @@
+using UnityEngine;
 using UnityEngine.Audio;
 using System;
-using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
@@ -28,5 +28,12 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public void PlayRandomExlposion()
+    {
+        int rnd = UnityEngine.Random.Range(0, 5);
+
+        sounds[rnd].source.Play();
     }
 }

@@ -103,6 +103,7 @@ MonoBehaviour:
   attackRange: 5
   attackCooldown: 1
   bullet: {fileID: 9189747687211852861, guid: 3a3f8af12ff81a64081ddb46a7c625fb, type: 3}
+  explosion: {fileID: 6346004375472641113, guid: 622dfa8bfb776754a9bd2f6add4c525e, type: 3}
 --- !u!50 &6896185016317223969
 Rigidbody2D:
   serializedVersion: 4

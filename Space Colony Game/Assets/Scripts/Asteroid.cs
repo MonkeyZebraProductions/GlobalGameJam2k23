@@ -11,12 +11,14 @@ public class Asteroid : MonoBehaviour
     public Size size;
 
     AsteroidSpawner asteroidSpawner;
+    AudioManager audioManager;
     Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         asteroidSpawner = GameObject.FindGameObjectWithTag("AS").GetComponent<AsteroidSpawner>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
         Destroy(gameObject, 30f);
@@ -41,6 +43,8 @@ public class Asteroid : MonoBehaviour
             AsteroidShatter(asteroidSpawner.smallAsteroid);
         }
 
+        audioManager.PlayRandomExlposion();
+        Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
         Destroy(gameObject);
     }
 
@@ -57,14 +61,16 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
-            explosion.Play();
+            Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
+            audioManager.PlayRandomExlposion();
             Destroy(gameObject);
         }
 
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(1);
-            explosion.Play();
+            Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
+            audioManager.PlayRandomExlposion();
             Destroy(gameObject);
         }
 

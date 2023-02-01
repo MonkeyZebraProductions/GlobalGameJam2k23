@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     [Header("VFX")]
     public ParticleSystem explosion;
     public ParticleSystem cannonVFX;
+    public GameObject engineAnimation;
 
     [Header("UI")]
     public TextMeshProUGUI healthText;
@@ -67,6 +68,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        engineAnimation.gameObject.SetActive(vertical == 1);
+
         Rotate();
         Shoot();
         Die();
@@ -197,6 +200,7 @@ public class Player : MonoBehaviour
         }
 
         renderer.enabled = spriteBool;
+        engineAnimation.gameObject.GetComponent<SpriteRenderer>().enabled = spriteBool;
     }
 
     void CameraSizeChange()

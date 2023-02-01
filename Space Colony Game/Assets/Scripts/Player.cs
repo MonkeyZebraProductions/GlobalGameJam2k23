@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
+            Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
             //game over
             Destroy(gameObject);
         }

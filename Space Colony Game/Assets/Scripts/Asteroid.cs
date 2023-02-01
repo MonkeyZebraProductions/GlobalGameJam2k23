@@ -44,7 +44,7 @@ public class Asteroid : MonoBehaviour
         }
 
         audioManager.PlayRandomExlposion();
-        Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
+        Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
         Destroy(gameObject);
     }
 
@@ -61,7 +61,7 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
-            Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
+            Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
             audioManager.PlayRandomExlposion();
             Destroy(gameObject);
         }
@@ -69,7 +69,7 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(1);
-            Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
+            Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
             audioManager.PlayRandomExlposion();
             Destroy(gameObject);
         }

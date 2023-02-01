@@ -192,11 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2873536737420297318, guid: 7f0ef418399be86459a8f8641619174c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 128
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2873536737420297318, guid: 7f0ef418399be86459a8f8641619174c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 128
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2873536737420297318, guid: 7f0ef418399be86459a8f8641619174c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -270,7 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10b03af1118b3458eb6846ca73f9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPrefab: {fileID: 516568717}
+  bigAsteroid: {fileID: 0}
+  mediumAsteroid: {fileID: 0}
+  smallAsteroid: {fileID: 0}
   cooldown: 5
   spawnPoints: []
 --- !u!4 &516568719
@@ -299,6 +301,7 @@ GameObject:
   - component: {fileID: 725362846}
   - component: {fileID: 725362845}
   - component: {fileID: 725362844}
+  - component: {fileID: 725362847}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -365,13 +368,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725362843}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.4973373, y: -40.82, z: -10}
+  m_LocalPosition: {x: 4.497345, y: -40.820007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &725362847
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725362843}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &969937198
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 796957516507154381, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 796957516507154381, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -943,7 +967,7 @@ RectTransform:
   m_Children:
   - {fileID: 969937199}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

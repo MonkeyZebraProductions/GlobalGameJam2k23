@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c71dd576eba9bb24696c2445eaa7f3cc, type: 3}
+  m_Color: {r: 1, g: 0.97547174, b: 0.97547174, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,9 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5c4b0f540643b42a2f20ecc8e998e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   size: 0
-  mediumAsteroid: {fileID: 3035412925093744769, guid: 280a0415b7308ab4e82625f94aef9902, type: 3}
-  smallAsteroid: {fileID: 3035412925093744769, guid: 57afdd5a4fed1654693e7722e5a89ecc, type: 3}
 --- !u!58 &3035412925093744778
 CircleCollider2D:
   m_ObjectHideFlags: 0

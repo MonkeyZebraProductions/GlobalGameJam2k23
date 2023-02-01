@@ -9,14 +9,17 @@ public class RevivePlanet : MonoBehaviour
     public SpriteRenderer AlivePlanet;
 
     public bool IsColonising;
-    public float AliveRate, UnaliveRate,AliveDistance,TooClose;
+    public float AliveRate, UnaliveRate,AliveDistance,TooClose, ScoreValue;
+
     private float alivePecentage;
     private Landing land;
+    private ScoreManager sM;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         land = FindObjectOfType<Landing>();
+        sM = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -50,7 +53,8 @@ public class RevivePlanet : MonoBehaviour
 
         if(alivePecentage>=100)
         {
-            land.enabled = true;
+            land.CanScore = true;
+            sM.AddPoints(ScoreValue);
             Destroy(this.gameObject);
         }
     }

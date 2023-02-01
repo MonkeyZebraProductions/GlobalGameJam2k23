@@ -194,7 +194,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 9189747687211852861, guid: 6394bb306b161cc4e8aed4ca6607336e, type: 3}
   shootingCooldown: 0.15
   shootingKey: 323
-  cannonVFX: {fileID: 0}
+  explosion: {fileID: 6346004375472641113, guid: 622dfa8bfb776754a9bd2f6add4c525e, type: 3}
+  cannonVFX: {fileID: 4154998901155862710, guid: 97617f65904b418498c94d5484eb0224, type: 3}
   healthText: {fileID: 0}
   currentHealth: 0
 --- !u!50 &796957516507154387

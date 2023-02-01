@@ -209,11 +209,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 101376211196300166, guid: a8043f436c78fd34dac23b659b635189, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4165.459
+      value: -489
       objectReference: {fileID: 0}
     - target: {fileID: 101376211196300166, guid: a8043f436c78fd34dac23b659b635189, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1305.9276
+      value: 303
       objectReference: {fileID: 0}
     - target: {fileID: 101376211196300166, guid: a8043f436c78fd34dac23b659b635189, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -230,6 +230,18 @@ PrefabInstance:
     - target: {fileID: 101376211196300167, guid: a8043f436c78fd34dac23b659b635189, type: 3}
       propertyPath: m_Name
       value: Score
+      objectReference: {fileID: 0}
+    - target: {fileID: 101376211196300281, guid: a8043f436c78fd34dac23b659b635189, type: 3}
+      propertyPath: m_fontSize
+      value: 17.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 101376211196300281, guid: a8043f436c78fd34dac23b659b635189, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 17.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 101376211196300281, guid: a8043f436c78fd34dac23b659b635189, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -488,6 +500,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 169eb34dfc9102f47b6ba29bf889c0fb, type: 3}
+--- !u!20 &525083970 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4582391981556608977, guid: d025c57703ae7354bb1462ab147d727d, type: 3}
+  m_PrefabInstance: {fileID: 412325146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &528409001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -865,8 +882,8 @@ Canvas:
   m_GameObject: {fileID: 934510271}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 525083970}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1048,6 +1065,10 @@ PrefabInstance:
     - target: {fileID: 2460201644258415216, guid: 7f0ef418399be86459a8f8641619174c, type: 3}
       propertyPath: m_Name
       value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460201644258415216, guid: 7f0ef418399be86459a8f8641619174c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2593865447413210556, guid: 7f0ef418399be86459a8f8641619174c, type: 3}
       propertyPath: m_Size.x

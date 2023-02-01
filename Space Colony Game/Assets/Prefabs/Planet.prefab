@@ -328,6 +328,7 @@ MonoBehaviour:
   UnaliveRate: 10
   AliveDistance: 6.6
   TooClose: 4.3
+  ScoreValue: 100
 --- !u!1 &1559838441
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +789,7 @@ Transform:
   - {fileID: 1559838443}
   - {fileID: 676138881}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6134508302007876351
 SpriteRenderer:

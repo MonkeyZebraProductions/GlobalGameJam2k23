@@ -31,12 +31,14 @@ public class Player : MonoBehaviour
 
     [Header("Private Variables")]
     private float vertical, horizontal;
-    private float shootTimer;
+    private float shootTimer, flashTimer;
     private float velocity;
     private float startingCamSize;
+    private bool spriteBool = false;
     private Rigidbody2D rb;
     private CircleCollider2D collider;
     private AudioManager audioManager;
+    private SpriteRenderer renderer;
 
     [HideInInspector]
     public int currentHealth;
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<CircleCollider2D>();
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
 
         currentHealth = startingHealth;
         shootTimer = shootingCooldown;
+        flashTimer = 0.125f;
         startingCamSize = Camera.main.orthographicSize;
 
         if (currentHealth > 0)
@@ -171,9 +175,28 @@ public class Player : MonoBehaviour
     void InvulnerablePerks()
     {
         if (!canTakeDamage)
+        {
             collider.enabled = false;
+            FlashingSprite();
+        }
         else
+        {
             collider.enabled = true;
+            renderer.enabled = true;
+        }
+    }
+
+    void FlashingSprite()
+    {
+        flashTimer -= Time.deltaTime;
+
+        if (flashTimer <= 0f)
+        {
+            spriteBool = !spriteBool;
+            flashTimer = 0.125f;
+        }
+
+        renderer.enabled = spriteBool;
     }
 
     void CameraSizeChange()
@@ -188,7 +211,12 @@ public class Player : MonoBehaviour
 
     void SFX()
     {
-        if(horizontal != 0)
+        if(currentHealth <= 0)
+        {
+            audioManager.sounds[5].source.Stop();
+        }
+
+        if(horizontal != 0 && !audioManager.sounds[6].source.isPlaying)
         {
             audioManager.Play("Rotating Ship");
         }

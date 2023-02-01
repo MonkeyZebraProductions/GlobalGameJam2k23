@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     public float shootingCooldown = 0.15f;
     public KeyCode shootingKey = KeyCode.Mouse0;
 
+    [Header("VFX")]
+    public ParticleSystem cannonVFX;
+
     [Header("UI")]
     public TextMeshProUGUI healthText;
 
@@ -88,7 +91,12 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(shootingKey) && shootTimer <= 0f)
         {
-            //play shoot SFX
+<<<<<<< Updated upstream
+            audioManager.Play("Shoot");
+=======
+            cannonVFX.Play();
+            //sfx
+>>>>>>> Stashed changes
             Instantiate(bulletPrefab, cannonObject.transform.position, cannonObject.transform.rotation);
             shootTimer = shootingCooldown;
         }

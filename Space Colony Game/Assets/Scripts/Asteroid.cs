@@ -5,6 +5,7 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     public float speed = 5f;
+    public ParticleSystem explosion;
 
     public enum Size { big, medium, small}
     public Size size;
@@ -56,12 +57,14 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
+            explosion.Play();
             Destroy(gameObject);
         }
 
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(1);
+            explosion.Play();
             Destroy(gameObject);
         }
 

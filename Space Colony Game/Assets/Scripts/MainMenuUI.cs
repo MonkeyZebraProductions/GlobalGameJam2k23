@@ -8,6 +8,7 @@ public class MainMenuUI : MonoBehaviour
     public string zen;
     public string normal;
     public string hard;
+    public string MainMenu;
 
     public void QuitGame()
     {
@@ -27,6 +28,11 @@ public class MainMenuUI : MonoBehaviour
     public void LoadSceneHard()
     {
         SceneManager.LoadScene(hard);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(MainMenu);
     }
 
 }

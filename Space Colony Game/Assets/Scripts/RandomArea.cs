@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class RandomArea : MonoBehaviour
 {
-    public GameObject DeadPlanet;
-    public GameObject Planet;
-    public GameObject Sun;
+    public GameObject erf;
+    public GameObject Mar;
     private float posX;
     public float maxXPos;
     public float minXPos;
@@ -20,7 +19,8 @@ public class RandomArea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnPlanet();
+        SpawnErf();
+        SpawnMar();
 
     }
 
@@ -56,14 +56,27 @@ public class RandomArea : MonoBehaviour
         return yPos;
     }
 
-    public void SpawnPlanet()
+    public void SpawnErf()
     {
 
-        PlanetAmount = Random.Range(2,6);
+        PlanetAmount = Random.Range(1,4);
         for (int i = 0; i < PlanetAmount; i++)
         {
-            Instantiate(Planet, new Vector3(GetXPos(posX), GetYPos(posY), 0), Quaternion.identity);
+            Instantiate(erf, new Vector3(GetXPos(posX), GetYPos(posY), 0), Quaternion.identity);
             
         }
     }
+
+    public void SpawnMar()
+    {
+
+        PlanetAmount = Random.Range(1,4);
+        for (int i = 0; i < PlanetAmount; i++)
+        {
+            Instantiate(Mar, new Vector3(GetXPos(posX), GetYPos(posY), 0), Quaternion.identity);
+
+        }
+    }
+
+
 }

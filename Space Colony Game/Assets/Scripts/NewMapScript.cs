@@ -61,7 +61,8 @@ public class NewMapScript : MonoBehaviour
             {
                 Destroy(Planet);
             }
-            rA.SpawnPlanet();
+            rA.SpawnErf(); 
+            rA.SpawnMar();
             _canSpawn = false;
             StartCoroutine(DelayRespawn());
         }

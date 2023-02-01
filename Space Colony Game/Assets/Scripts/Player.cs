@@ -91,12 +91,8 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(shootingKey) && shootTimer <= 0f)
         {
-<<<<<<< Updated upstream
             audioManager.Play("Shoot");
-=======
             cannonVFX.Play();
-            //sfx
->>>>>>> Stashed changes
             Instantiate(bulletPrefab, cannonObject.transform.position, cannonObject.transform.rotation);
             shootTimer = shootingCooldown;
         }

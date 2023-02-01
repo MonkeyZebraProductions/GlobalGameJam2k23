@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(shootingKey) && shootTimer <= 0f)
         {
-            //play shoot SFX
+            audioManager.Play("Shoot");
             Instantiate(bulletPrefab, cannonObject.transform.position, cannonObject.transform.rotation);
             shootTimer = shootingCooldown;
         }

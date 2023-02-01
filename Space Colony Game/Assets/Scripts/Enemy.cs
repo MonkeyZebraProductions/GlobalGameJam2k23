@@ -16,11 +16,13 @@ public class Enemy : MonoBehaviour
     public ParticleSystem explosion;
 
     private float pSpeed, attackTimer;
+    AudioManager audioManager;
     Player player;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -56,6 +58,7 @@ public class Enemy : MonoBehaviour
 
         if (attackTimer <= 0f)
         {
+            audioManager.Play("Enemy Shoot");
             Instantiate(bullet, transform.position + (transform.up * 0.75f), transform.rotation);
             attackTimer = attackCooldown;
         }
@@ -63,7 +66,8 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        explosion.Play();
+        audioManager.PlayRandomExlposion();
+        Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
         Destroy(gameObject);
     }
 

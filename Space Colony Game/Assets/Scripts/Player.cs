@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public KeyCode shootingKey = KeyCode.Mouse0;
 
     [Header("VFX")]
+    public ParticleSystem explosion;
     public ParticleSystem cannonVFX;
 
     [Header("UI")]
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
     private float vertical, horizontal;
     private float shootTimer;
     private float velocity;
+    private float startingCamSize;
     private Rigidbody2D rb;
     private CircleCollider2D collider;
     private AudioManager audioManager;
@@ -48,13 +50,19 @@ public class Player : MonoBehaviour
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+
         currentHealth = startingHealth;
         shootTimer = shootingCooldown;
+        startingCamSize = Camera.main.orthographicSize;
+
+        if (currentHealth > 0)
+        {
+            audioManager.Play("Jet Engine");
+        }
     }
 
     void Update()
     {
-        //Movement();
         Rotate();
         Shoot();
         Die();
@@ -62,6 +70,8 @@ public class Player : MonoBehaviour
         ShootingTimer();
         VelocityControl();
         InvulnerablePerks();
+        CameraSizeChange();
+        SFX();
     }
 
     private void FixedUpdate()
@@ -102,7 +112,7 @@ public class Player : MonoBehaviour
     {
         if(canTakeDamage)
         {
-            //play damage SFX
+            audioManager.Play("Player Damaged");
             currentHealth -= damage;
             StartCoroutine(InvulnerableFrames());
         }
@@ -117,7 +127,7 @@ public class Player : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            //play explosion VFX
+            Instantiate(explosion.gameObject, transform.position, explosion.transform.rotation);
             //game over
             Destroy(gameObject);
         }
@@ -164,5 +174,23 @@ public class Player : MonoBehaviour
             collider.enabled = false;
         else
             collider.enabled = true;
+    }
+
+    void CameraSizeChange()
+    {
+        Camera.main.orthographicSize = startingCamSize + rb.velocity.magnitude;
+
+        if(Camera.main.orthographicSize >= 13f)
+        {
+            Camera.main.orthographicSize = 13f;
+        }
+    }
+
+    void SFX()
+    {
+        if(horizontal != 0)
+        {
+            audioManager.Play("Rotating Ship");
+        }
     }
 }

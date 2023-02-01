@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     private float startingCamSize;
     private bool spriteBool = false;
     private Rigidbody2D rb;
-    private CircleCollider2D collider;
+    private CapsuleCollider2D collider;
     private AudioManager audioManager;
     private SpriteRenderer renderer;
 
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<CircleCollider2D>();
+        collider = GetComponent<CapsuleCollider2D>();
         renderer = GetComponent<SpriteRenderer>();
     }
 

@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     public float attackCooldown;
     public GameObject bullet;
 
+    [Header("VFX")]
+    public ParticleSystem explosion;
+
     private float pSpeed, attackTimer;
     Player player;
 
@@ -60,7 +63,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        //instantiate explosion particle
+        explosion.Play();
         Destroy(gameObject);
     }
 

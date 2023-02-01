@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public ParticleSystem explosion;
     public ParticleSystem cannonVFX;
     public GameObject engineAnimation;
+    public GameObject puffLeft, puffRight;
 
     [Header("UI")]
     public TextMeshProUGUI healthText;
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
         ShootingTimer();
         VelocityControl();
         InvulnerablePerks();
+        PuffControl();
         CameraSizeChange();
         SFX();
     }
@@ -201,6 +203,27 @@ public class Player : MonoBehaviour
 
         renderer.enabled = spriteBool;
         engineAnimation.gameObject.GetComponent<SpriteRenderer>().enabled = spriteBool;
+        puffLeft.gameObject.GetComponent<SpriteRenderer>().enabled = spriteBool;
+        puffRight.gameObject.GetComponent<SpriteRenderer>().enabled = spriteBool;
+    }
+
+    void PuffControl()
+    {
+        if(horizontal == -1)
+        {
+            puffRight.gameObject.SetActive(true);
+        }
+
+        if(horizontal == 1)
+        {
+            puffLeft.gameObject.SetActive(true);
+        }
+
+        if(horizontal == 0)
+        {
+            puffRight.gameObject.SetActive(false);
+            puffLeft.gameObject.SetActive(false);
+        }
     }
 
     void CameraSizeChange()

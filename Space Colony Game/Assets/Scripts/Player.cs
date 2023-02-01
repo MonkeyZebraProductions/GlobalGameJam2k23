@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     private float velocity;
     private Rigidbody2D rb;
     private CircleCollider2D collider;
+    private AudioManager audioManager;
 
     [HideInInspector]
     public int currentHealth;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         currentHealth = startingHealth;
         shootTimer = shootingCooldown;
     }

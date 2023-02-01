@@ -5,9 +5,11 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 5f;
+    AudioManager audioManager;
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         Destroy(gameObject, 5f);
     }
 

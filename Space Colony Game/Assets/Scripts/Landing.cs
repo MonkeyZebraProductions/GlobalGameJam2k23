@@ -23,7 +23,7 @@ public class Landing : MonoBehaviour
     }
     private void Update()
     {
-        if(ShipRB.velocity.magnitude < 1f)
+        if(ShipRB.velocity.magnitude < 1.5f)
         {
             slow = true;
         }

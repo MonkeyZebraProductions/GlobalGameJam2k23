@@ -273,7 +273,7 @@ MonoBehaviour:
   shootingCooldown: 0.15
   shootingKey: 323
   explosion: {fileID: 6346004375472641113, guid: 622dfa8bfb776754a9bd2f6add4c525e, type: 3}
-  cannonVFX: {fileID: 4154998901155862710, guid: 97617f65904b418498c94d5484eb0224, type: 3}
+  cannonVFX: {fileID: 8012486763143009278}
   engineAnimation: {fileID: 2915141013649426238}
   puffLeft: {fileID: 2901018407355152738}
   puffRight: {fileID: 3178741070592140180}

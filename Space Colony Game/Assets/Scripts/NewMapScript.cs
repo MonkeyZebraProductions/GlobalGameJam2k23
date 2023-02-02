@@ -45,7 +45,7 @@ public class NewMapScript : MonoBehaviour
             {
               float xPos = ship.position.x;
                 xPos *= -1;
-                xPos += 1;
+                xPos -= 1;
                 ship.position = new Vector2(xPos,ship.position.y);
                 
             }

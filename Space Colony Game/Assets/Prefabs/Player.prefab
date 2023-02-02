@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  rotationSpeed: 0.8
+  rotationSpeed: 1.5
   velocityLimit: 2.5
   acceleration: 3
   decelaration: 1.5

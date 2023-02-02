@@ -60,7 +60,7 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Enemy>().Die();
             Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
             audioManager.PlayRandomExlposion();
             Destroy(gameObject);
@@ -78,6 +78,11 @@ public class Asteroid : MonoBehaviour
         {
             /*collision.gameObject.GetComponent<Asteroid>().Die();
             Die();*/
+        }
+
+        if(collision.gameObject.CompareTag("Planet"))
+        {
+            Destroy(gameObject);
         }
     }
 }

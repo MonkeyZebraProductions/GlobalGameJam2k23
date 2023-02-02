@@ -38,5 +38,10 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<Player>().TakeDamage(1);
             Destroy(gameObject);
         }
+
+        if(collision.gameObject.CompareTag("Planet"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

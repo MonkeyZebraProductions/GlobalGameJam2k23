@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     public float acceleration = 10f;
     public float decelaration = 10f;
 
+    [Header("Gravitational Force")]
+    public LayerMask planetMask;
+    public float planetDetectionRadius = 4f;
+
     [Header("Cannon")]
     public GameObject cannonObject;
     public GameObject bulletPrefab;
@@ -34,9 +38,10 @@ public class Player : MonoBehaviour
     [Header("Private Variables")]
     private float vertical, horizontal;
     private float shootTimer, flashTimer;
-    private float velocity;
+    public float velocity;
     private float startingCamSize;
     private bool spriteBool = false;
+    private Collider2D[] planets;
     private Rigidbody2D rb;
     private CapsuleCollider2D collider;
     private AudioManager audioManager;
@@ -71,9 +76,21 @@ public class Player : MonoBehaviour
     {
         engineAnimation.gameObject.SetActive(vertical == 1);
 
+        if(vertical == 1 && velocity > 0f)
+        {
+            audioManager.sounds[5].source.UnPause();
+        }
+
+        else
+        {
+            audioManager.sounds[5].source.Pause();
+        }
+
+        if (currentHealth <= 0)
+            Die();
+        
         Rotate();
         Shoot();
-        Die();
         UIElements();
         ShootingTimer();
         VelocityControl();
@@ -87,6 +104,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        GravityOfYou();
     }
 
     void Movement()
@@ -102,6 +120,23 @@ public class Player : MonoBehaviour
         velocity = rb.velocity.magnitude;
     }
 
+    void GravityOfYou()
+    {
+        planets = Physics2D.OverlapCircleAll(transform.position, planetDetectionRadius, planetMask);
+
+        if (planets != null)
+        {
+            foreach (Collider2D planet in planets)
+            {
+                Vector2 direction = planet.transform.position - transform.position;
+                rb.AddForce(direction * 0.1f);
+            }
+        }
+
+        else
+            return;
+    }
+
     void Rotate()
     {
         transform.Rotate(0f, 0f, -horizontal * rotationSpeed);
@@ -109,7 +144,7 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        if(Input.GetKeyDown(shootingKey) && shootTimer <= 0f)
+        if(Input.GetKey(shootingKey) && shootTimer <= 0f)
         {
             audioManager.Play("Shoot");
             cannonVFX.Play();
@@ -133,14 +168,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
-        if(currentHealth <= 0)
-        {
-            Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
-            //game over
-            Destroy(gameObject);
-        }
+        Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
+        //game over
+        Destroy(gameObject);
     }
 
     IEnumerator InvulnerableFrames()
@@ -231,9 +263,9 @@ public class Player : MonoBehaviour
     {
         Camera.main.orthographicSize = startingCamSize + rb.velocity.magnitude;
 
-        if(Camera.main.orthographicSize >= 13f)
+        if(Camera.main.orthographicSize >= 10f)
         {
-            Camera.main.orthographicSize = 13f;
+            Camera.main.orthographicSize = 10f;
         }
     }
 
@@ -254,5 +286,11 @@ public class Player : MonoBehaviour
         {
             audioManager.Play("Rotating Ship");
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, planetDetectionRadius);
     }
 }

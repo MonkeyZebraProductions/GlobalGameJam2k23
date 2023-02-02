@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 796957516507154383}
   - component: {fileID: 796957516507154387}
   - component: {fileID: 3726942781645030265}
+  - component: {fileID: 3017830316406678733}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -196,6 +197,7 @@ Transform:
   - {fileID: 5055797166362006210}
   - {fileID: 2997744519445510782}
   - {fileID: 7343625031324660595}
+  - {fileID: 5127024456086641476}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -268,6 +270,10 @@ MonoBehaviour:
   velocityLimit: 2.5
   acceleration: 3
   decelaration: 1.5
+  planetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  planetDetectionRadius: 4
   cannonObject: {fileID: 796957517528358085}
   bulletPrefab: {fileID: 9189747687211852861, guid: 6394bb306b161cc4e8aed4ca6607336e, type: 3}
   shootingCooldown: 0.15
@@ -278,6 +284,7 @@ MonoBehaviour:
   puffLeft: {fileID: 2901018407355152738}
   puffRight: {fileID: 3178741070592140180}
   healthText: {fileID: 0}
+  velocity: 0
   currentHealth: 0
 --- !u!50 &796957516507154387
 Rigidbody2D:
@@ -316,6 +323,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.616, y: 1.096}
   m_Direction: 0
+--- !u!114 &3017830316406678733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796957516507154382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dc8d0b6fe56a940bf1e1b8d05b7ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 796957516507154383}
 --- !u!1 &796957516950318356
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +554,105 @@ MonoBehaviour:
   player: {fileID: 796957516950318357}
   speed: 100
   radius: 1
+--- !u!1 &839262085062793734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5127024456086641476}
+  - component: {fileID: 9149659624457308542}
+  - component: {fileID: 5575314737835828446}
+  - component: {fileID: 1072172671679009072}
+  - component: {fileID: 8982846336608566277}
+  m_Layer: 0
+  m_Name: Planet Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5127024456086641476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839262085062793734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 796957516507154381}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9149659624457308542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839262085062793734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dc8d0b6fe56a940bf1e1b8d05b7ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 796957516507154383}
+--- !u!70 &5575314737835828446
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839262085062793734}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.55, y: 1}
+  m_Direction: 0
+--- !u!50 &1072172671679009072
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839262085062793734}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &8982846336608566277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839262085062793734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0dfdef0c359b7645b7a89e6b34aa37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 796957516507154381}
+  z: 0
 --- !u!1 &2901018407355152738
 GameObject:
   m_ObjectHideFlags: 0

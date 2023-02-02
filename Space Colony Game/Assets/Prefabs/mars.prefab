@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 2057395231500913891}
   - component: {fileID: 5019826217181373772}
   - component: {fileID: 286901762286853412}
+  - component: {fileID: -3549938232082672685}
   m_Layer: 6
   m_Name: mars
   m_TagString: Planet
@@ -529,3 +530,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Colony: {fileID: 286901760396941861}
   IsColonised: 0
+--- !u!114 &-3549938232082672685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611029217064513589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dc8d0b6fe56a940bf1e1b8d05b7ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -647,6 +647,22 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 839262085062793734, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127024456086641476, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127024456086641476, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127024456086641476, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}

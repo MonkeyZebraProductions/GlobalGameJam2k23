@@ -178,8 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6896185016317223978, guid: e1a11f6e0563a6647a7b5871b3bc366f, type: 3}
-  cooldown: 1
-  enemyLimit: 3
+  cooldown: 5
+  enemyLimit: 4
   spawnPoints:
   - {fileID: 846950453477664727}
   - {fileID: 846950454392183251}

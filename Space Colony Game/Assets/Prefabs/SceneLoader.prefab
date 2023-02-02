@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7193785e5841ef14db680c2ddbf33c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zen: 
-  normal: 
-  hard: 
+  zen: Zen
+  normal: Normal
+  hard: Hard
   MainMenu: Main_Menu

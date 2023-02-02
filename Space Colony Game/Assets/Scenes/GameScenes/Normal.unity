@@ -641,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 796957516507154381, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -18.9
       objectReference: {fileID: 0}
     - target: {fileID: 796957516507154381, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -999,6 +999,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 846950453459923128, guid: ed2e32adad3b42c4cba741e6ae69fedf, type: 3}
+      propertyPath: cooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 846950453459923128, guid: ed2e32adad3b42c4cba741e6ae69fedf, type: 3}
+      propertyPath: enemyLimit
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 846950453459923129, guid: ed2e32adad3b42c4cba741e6ae69fedf, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner

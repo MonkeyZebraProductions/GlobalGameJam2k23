@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     [Header("UI")]
     public TextMeshProUGUI healthText;
+    public GameObject DeathScreen;
 
     [Header("Private Variables")]
     private float vertical, horizontal;
@@ -171,6 +172,8 @@ public class Player : MonoBehaviour
     public void Die()
     {
         Instantiate(explosion.gameObject, transform.position - Vector3.one, explosion.transform.rotation);
+        audioManager.PlayRandomExlposion();
+        DeathScreen.SetActive(true);
         //game over
         Destroy(gameObject);
     }

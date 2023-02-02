@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
 
     public float Score;
-    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI ScoreText,FinalScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ScoreText.text = "Score: " + Score;
+        ScoreText.text = FinalScore.text = "Score: " + Score;
     }
 
     public void AddPoints(float points)

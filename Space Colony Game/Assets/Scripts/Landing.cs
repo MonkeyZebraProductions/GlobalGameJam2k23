@@ -8,6 +8,8 @@ public class Landing : MonoBehaviour
     private AddColony aC;
     private bool slow;
     private ScoreManager sM;
+    AudioManager audioManager;
+    Player player;
 
     public bool CanScore;
 
@@ -16,6 +18,8 @@ public class Landing : MonoBehaviour
     private void Start()
     {
         sM = FindObjectOfType<ScoreManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
     private void Update()
     {
@@ -35,6 +39,8 @@ public class Landing : MonoBehaviour
         
         if(slow && CanScore)
         {
+            audioManager.Play("Colonise Success");
+            player.currentHealth++;
             sM.AddPoints(ScoreValue);
             aC = collision.gameObject.GetComponent<AddColony>();
             aC.IsColonised = true;

@@ -643,6 +643,10 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 311416984}
+    - target: {fileID: 796957516507154383, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}
+      propertyPath: rotationSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a818f5c0121d82f46a9ed0324383623c, type: 3}

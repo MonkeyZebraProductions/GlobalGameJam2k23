@@ -94,7 +94,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Reload
+  - name: Revive Success
     clip: {fileID: 8300000, guid: a4d0710b4223f9040afbee2bf21b9f94, type: 3}
     volume: 1
     pitch: 1

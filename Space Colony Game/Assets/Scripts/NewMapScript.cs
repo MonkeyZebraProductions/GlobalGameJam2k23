@@ -21,40 +21,7 @@ public class NewMapScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-       
-            ship = collision.gameObject.transform;
-            shipRB = collision.gameObject.GetComponent<Rigidbody2D>();
 
-        
-            if (shipRB.velocity.x < -0.1f)
-            {
-              float xPos = ship.position.x;
-                xPos *= -1;
-                ship.position = new Vector2(xPos,ship.position.y);
-                
-            }
-
-            if (shipRB.velocity.x > 0.1f)
-            {
-                float xPos = ship.position.x;
-                xPos *= -1;
-                ship.position = new Vector2(xPos, ship.position.y);
-            }
-
-            if (shipRB.velocity.y < -0.1f)
-            {
-                float yPos = ship.position.y;
-                yPos *= -1;
-                ship.position = new Vector2(ship.position.x, yPos);
-            }
-
-            if (shipRB.velocity.y > 0.1f)
-            {
-                float yPos = ship.position.y;
-                yPos *= -1;
-                ship.position = new Vector2(ship.position.x, yPos);
-            }
-            //
             if (collision.CompareTag("Player") && _canSpawn)
             {
                 Debug.Log("ah");
@@ -64,11 +31,52 @@ public class NewMapScript : MonoBehaviour
                 {
                     Destroy(Planet);
                 }
-                rA.SpawnErf(); 
+                rA.SpawnErf();
                 rA.SpawnMar();
                 _canSpawn = false;
                 StartCoroutine(DelayRespawn());
             }
+
+            ship = collision.gameObject.transform;
+            shipRB = collision.gameObject.GetComponent<Rigidbody2D>();
+
+        
+            if (shipRB.velocity.x < -0.1f)
+            {
+              float xPos = ship.position.x;
+                xPos *= -1;
+                xPos += 1;
+                ship.position = new Vector2(xPos,ship.position.y);
+                
+            }
+
+            if (shipRB.velocity.x > 0.1f)
+            {
+                float xPos = ship.position.x;
+                xPos *= -1;
+                xPos += 1;
+                ship.position = new Vector2(xPos, ship.position.y);
+            }
+
+            if (shipRB.velocity.y < -0.1f)
+            {
+                float yPos = ship.position.y;
+                yPos *= -1;
+                yPos -= 1;
+                ship.position = new Vector2(ship.position.x, yPos);
+            }
+
+            if (shipRB.velocity.y > 0.1f)
+            {
+                float yPos = ship.position.y;
+                yPos *= -1;
+                yPos += 1;
+                ship.position = new Vector2(ship.position.x, yPos);
+            }
+            //
+           
+
+          
         }
 
 

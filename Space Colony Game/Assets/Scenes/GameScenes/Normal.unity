@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 101376211196300166, guid: a8043f436c78fd34dac23b659b635189, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 303
+      value: 362.4302
       objectReference: {fileID: 0}
     - target: {fileID: 101376211196300166, guid: a8043f436c78fd34dac23b659b635189, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1689,11 +1689,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6335679770267458661, guid: 9f4b0db0ca0fb5f48a6831c2b87d2ea5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -700
+      value: -711
       objectReference: {fileID: 0}
     - target: {fileID: 6335679770267458661, guid: 9f4b0db0ca0fb5f48a6831c2b87d2ea5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 450
+      value: 341
       objectReference: {fileID: 0}
     - target: {fileID: 6335679770267458661, guid: 9f4b0db0ca0fb5f48a6831c2b87d2ea5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1707,6 +1707,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6335679770267458682, guid: 9f4b0db0ca0fb5f48a6831c2b87d2ea5, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335679770267458682, guid: 9f4b0db0ca0fb5f48a6831c2b87d2ea5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e6d06da75d298334ca49fb714eab7bb2, type: 2}
+    - target: {fileID: 6335679770267458682, guid: 9f4b0db0ca0fb5f48a6831c2b87d2ea5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335679770267458682, guid: 9f4b0db0ca0fb5f48a6831c2b87d2ea5, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 9076756040981457861, guid: e6d06da75d298334ca49fb714eab7bb2, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f4b0db0ca0fb5f48a6831c2b87d2ea5, type: 3}

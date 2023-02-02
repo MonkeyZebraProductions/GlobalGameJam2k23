@@ -14,12 +14,14 @@ public class RevivePlanet : MonoBehaviour
     private float alivePecentage;
     private Landing land;
     private ScoreManager sM;
+    private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         land = FindObjectOfType<Landing>();
         sM = FindObjectOfType<ScoreManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -55,6 +57,7 @@ public class RevivePlanet : MonoBehaviour
         {
             land.CanScore = true;
             sM.AddPoints(ScoreValue);
+            audioManager.Play("Revive Success");
             Destroy(this.gameObject);
         }
     }

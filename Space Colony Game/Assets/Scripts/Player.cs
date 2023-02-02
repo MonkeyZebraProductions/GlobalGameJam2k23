@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
         InvulnerablePerks();
         PuffControl();
         CameraSizeChange();
+        HealthControl();
         SFX();
     }
 
@@ -234,6 +235,12 @@ public class Player : MonoBehaviour
         {
             Camera.main.orthographicSize = 13f;
         }
+    }
+
+    void HealthControl()
+    {
+        if (currentHealth >= startingHealth)
+            currentHealth = startingHealth;
     }
 
     void SFX()

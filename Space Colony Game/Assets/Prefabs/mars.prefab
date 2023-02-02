@@ -188,6 +188,7 @@ MonoBehaviour:
   UnaliveRate: 10
   AliveDistance: 6.6
   TooClose: 4.3
+  ScoreValue: 0
 --- !u!1 &286901761167523459
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +396,7 @@ Transform:
   - {fileID: 286901760396941883}
   - {fileID: 286901761167523457}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6258140280671107733
 SpriteRenderer:
@@ -462,9 +463,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0038956236, y: 0.007840702}
   serializedVersion: 2
-  m_Radius: 0.49999997
+  m_Radius: 0.4548352
 --- !u!58 &4907850723355557084
 CircleCollider2D:
   m_ObjectHideFlags: 0

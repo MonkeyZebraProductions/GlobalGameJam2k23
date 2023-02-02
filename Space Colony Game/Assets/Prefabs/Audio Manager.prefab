@@ -83,7 +83,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Rotating Ship
     clip: {fileID: 8300000, guid: 41fb37dbd8de69945bf9544fd9779796, type: 3}
-    volume: 1
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}

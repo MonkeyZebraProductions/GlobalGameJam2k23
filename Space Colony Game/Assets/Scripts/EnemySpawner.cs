@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public float cooldown;
     public float limitCooldown = 60f;
     public int enemyLimit = 3;
-    public int minAmountOfEnemiesSpawned, maxAmountOfEnemiesSpawned;
+    public int minAmountOfEnemiesSpawned = 1, maxAmountOfEnemiesSpawned = 3;
     public Transform[] spawnPoints;
 
     GameObject[] enemiesAlive;
@@ -29,7 +29,20 @@ public class EnemySpawner : MonoBehaviour
             timer -= Time.deltaTime;
 
             if (timer <= 0f)
-                SpawnEnemy();
+            {
+                int rnd = Random.Range(minAmountOfEnemiesSpawned, maxAmountOfEnemiesSpawned + 1);
+
+                if((rnd + enemiesAlive.Length) > enemyLimit)
+                {
+                    int overlap = (rnd + enemiesAlive.Length) - enemyLimit;
+                    rnd = overlap;
+                }
+
+                for (int i = 0; i < rnd; i++)
+                {
+                    SpawnEnemy();
+                }
+            }
         }
 
         IncreaseLimit();

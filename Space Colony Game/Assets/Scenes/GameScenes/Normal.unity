@@ -1113,6 +1113,10 @@ PrefabInstance:
       propertyPath: enemyLimit
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 846950453459923128, guid: ed2e32adad3b42c4cba741e6ae69fedf, type: 3}
+      propertyPath: limitCooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 846950453459923129, guid: ed2e32adad3b42c4cba741e6ae69fedf, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner

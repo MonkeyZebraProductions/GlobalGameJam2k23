@@ -286,6 +286,11 @@ public class Player : MonoBehaviour
         {
             audioManager.Play("Rotating Ship");
         }
+
+        else if(horizontal == 0)
+        {
+            audioManager.sounds[6].source.Stop();
+        }
     }
 
     private void OnDrawGizmos()

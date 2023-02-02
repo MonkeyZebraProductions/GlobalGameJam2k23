@@ -2114,6 +2114,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 2632637281861380405, guid: 252c3f8e0103f7a4c914fc392666252f, type: 3}
+      propertyPath: zen
+      value: Zen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632637281861380405, guid: 252c3f8e0103f7a4c914fc392666252f, type: 3}
+      propertyPath: hard
+      value: Hard
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632637281861380405, guid: 252c3f8e0103f7a4c914fc392666252f, type: 3}
+      propertyPath: normal
+      value: Normal
+      objectReference: {fileID: 0}
     - target: {fileID: 2632637281861380410, guid: 252c3f8e0103f7a4c914fc392666252f, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -36,6 +36,13 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI healthText;
     public GameObject DeathScreen;
 
+    [Header("Power Ups Stuff")]
+    bool shieldActive = false, hasPotatoBomb = false;
+    public KeyCode bombKey;
+    public PotatoBomb bombObject;
+    public GameObject cannon2, cannon3;
+    public Transform pivot, pivot2, pivot3;
+
     [Header("Private Variables")]
     private float vertical, horizontal;
     private float shootTimer, flashTimer;
@@ -99,6 +106,8 @@ public class Player : MonoBehaviour
         PuffControl();
         CameraSizeChange();
         HealthControl();
+        ActivatePotatoBomb();
+        SetPivots();
         SFX();
     }
 
@@ -150,6 +159,11 @@ public class Player : MonoBehaviour
             audioManager.Play("Shoot");
             cannonVFX.Play();
             Instantiate(bulletPrefab, cannonObject.transform.position, cannonObject.transform.rotation);
+            if(cannon2.activeInHierarchy && cannon3.activeInHierarchy)
+            {
+                Instantiate(bulletPrefab, cannon2.transform.position, cannon2.transform.rotation);
+                Instantiate(bulletPrefab, cannon3.transform.position, cannon3.transform.rotation);
+            }
             shootTimer = shootingCooldown;
         }
     }
@@ -158,9 +172,17 @@ public class Player : MonoBehaviour
     {
         if(canTakeDamage)
         {
-            audioManager.Play("Player Damaged");
-            currentHealth -= damage;
-            StartCoroutine(InvulnerableFrames());
+            if(!shieldActive)
+            {
+                audioManager.Play("Player Damaged");
+                currentHealth -= damage;
+                StartCoroutine(InvulnerableFrames());
+            }
+
+            if (shieldActive)
+            {
+                shieldActive = false;
+            }
         }
 
         else
@@ -294,6 +316,48 @@ public class Player : MonoBehaviour
         {
             audioManager.sounds[6].source.Stop();
         }
+    }
+
+    public IEnumerator TripleShots()
+    {
+        cannon2.SetActive(true);
+        cannon3.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        Debug.Log("???");
+        cannon2.SetActive(false);
+        cannon3.SetActive(false);
+    }
+
+    public void EnergyShieldActive()
+    {
+        shieldActive = true;
+    }
+
+    public void PotatoBomb()
+    {
+        hasPotatoBomb = true;
+    }
+
+    void ActivatePotatoBomb()
+    {
+        if (hasPotatoBomb)
+        {
+            //UI Update
+            if (Input.GetKeyDown(bombKey))
+            {
+                Instantiate(bombObject, transform.position, Quaternion.identity);
+                hasPotatoBomb = false;
+            }
+        }
+
+        else
+            return;
+    }
+
+    void SetPivots()
+    {
+        pivot2.eulerAngles = new Vector3(0f, 0f, pivot.rotation.z + 120f);
+        pivot3.eulerAngles = new Vector3(0f, 0f, pivot.rotation.z + 240f);
     }
 
     private void OnDrawGizmos()

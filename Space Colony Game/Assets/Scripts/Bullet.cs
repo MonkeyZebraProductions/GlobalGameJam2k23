@@ -6,16 +6,18 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 5f;
     AudioManager audioManager;
+    private Player PlayerVelocity;
 
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
         Destroy(gameObject, 5f);
+        PlayerVelocity = FindObjectOfType<Player>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * (speed+(PlayerVelocity.velocity)) * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

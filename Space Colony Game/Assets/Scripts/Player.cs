@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public float rotationSpeed;
     public float velocityLimit;
     public float acceleration = 10f;
-    public float decelaration = 10f;
+    public float decelaration = 8f;
 
     [Header("Gravitational Force")]
     public LayerMask planetMask;
@@ -207,7 +207,7 @@ public class Player : MonoBehaviour
             velocity = velocityLimit;
         }
 
-        if (vertical == -1 && velocity < 0.5f)
+        if (vertical == -1 && velocity < 0.01f)
         {
             rb.velocity = Vector3.zero;
         }

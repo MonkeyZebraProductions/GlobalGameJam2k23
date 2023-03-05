@@ -9,7 +9,6 @@ public class NewMapScript : MonoBehaviour
     private RandomArea rA;
 
     private bool _canSpawn;
-
     // Start is called before the first frame update
     void Start()
     {

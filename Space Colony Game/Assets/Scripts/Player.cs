@@ -35,13 +35,16 @@ public class Player : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI healthText;
     public GameObject DeathScreen;
+    public Image tripleShot, energyShield, potatoBomb;
 
     [Header("Power Ups Stuff")]
-    bool shieldActive = false, hasPotatoBomb = false;
+    bool tripleShotActive = false, shieldActive = false, hasPotatoBomb = false;
+    public float tripleShotDuration = 30f;
     public KeyCode bombKey;
     public PotatoBomb bombObject;
     public GameObject cannon2, cannon3;
     public Transform pivot, pivot2, pivot3;
+    float timer;
 
     [Header("Private Variables")]
     private float vertical, horizontal;
@@ -72,6 +75,7 @@ public class Player : MonoBehaviour
         currentHealth = startingHealth;
         shootTimer = shootingCooldown;
         flashTimer = 0.125f;
+        timer = tripleShotDuration;
         startingCamSize = Camera.main.orthographicSize;
 
         if (currentHealth > 0)
@@ -96,6 +100,8 @@ public class Player : MonoBehaviour
 
         if (currentHealth <= 0)
             Die();
+
+        tripleShot.fillAmount = timer / tripleShotDuration;
         
         Rotate();
         Shoot();
@@ -109,6 +115,17 @@ public class Player : MonoBehaviour
         ActivatePotatoBomb();
         SetPivots();
         SFX();
+
+        if(tripleShotActive)
+        {
+            TripleShots();
+        }
+
+        energyShield.gameObject.SetActive(shieldActive);
+        potatoBomb.gameObject.SetActive(hasPotatoBomb);
+        cannon2.SetActive(tripleShotActive);
+        cannon3.SetActive(tripleShotActive);
+        tripleShot.gameObject.SetActive(tripleShotActive);
     }
 
     private void FixedUpdate()
@@ -318,14 +335,20 @@ public class Player : MonoBehaviour
         }
     }
 
-    public IEnumerator TripleShots()
+    void TripleShots()
     {
-        cannon2.SetActive(true);
-        cannon3.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        Debug.Log("???");
-        cannon2.SetActive(false);
-        cannon3.SetActive(false);
+        timer -= Time.deltaTime;
+
+        if(timer <= 0f)
+        {
+            timer = tripleShotDuration;
+            tripleShotActive = false;
+        }
+    }
+
+    public void TripleShotsActive()
+    {
+        tripleShotActive = true;
     }
 
     public void EnergyShieldActive()
@@ -358,6 +381,11 @@ public class Player : MonoBehaviour
     {
         pivot2.eulerAngles = new Vector3(0f, 0f, pivot.rotation.z + 120f);
         pivot3.eulerAngles = new Vector3(0f, 0f, pivot.rotation.z + 240f);
+    }
+
+    public void ResetTripleShots()
+    {
+        timer = tripleShotDuration;
     }
 
     private void OnDrawGizmos()

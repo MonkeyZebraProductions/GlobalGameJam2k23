@@ -26,7 +26,8 @@ public class PowerUp : MonoBehaviour
             switch(power)
             {
                 case Power.TrippleShot:
-                    StartCoroutine(player.TripleShots());
+                    player.TripleShotsActive();
+                    player.ResetTripleShots();
                     break;
 
                 case Power.EnergyShield:

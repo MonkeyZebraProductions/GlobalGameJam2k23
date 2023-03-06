@@ -6,6 +6,7 @@ public class PowerUpSpawner : MonoBehaviour
 {
     public float cooldown;
     public PowerUp[] powerUps;
+    public Transform[] spawnPoints;
     float timer;
 
     void Start()
@@ -20,8 +21,9 @@ public class PowerUpSpawner : MonoBehaviour
         if(timer <= 0f)
         {
             int rnd = Random.Range(0, powerUps.Length);
+            int pos = Random.Range(0, spawnPoints.Length);
 
-            Instantiate(powerUps[rnd], transform.position, Quaternion.identity);
+            Instantiate(powerUps[rnd], spawnPoints[pos].position, Quaternion.identity);
             timer = cooldown;
         }
     }

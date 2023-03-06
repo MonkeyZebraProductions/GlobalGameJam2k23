@@ -12,6 +12,7 @@ public class PowerUp : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        Destroy(gameObject, 60f);
     }
 
     void Update()
